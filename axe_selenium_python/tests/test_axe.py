@@ -1,9 +1,10 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this file,
 # You can obtain one at http://mozilla.org/MPL/2.0/.
-
 import json
-from os import getcwd, getenv, path
+from os import getcwd
+from os import getenv
+from os import path
 
 import pytest
 from selenium import webdriver
@@ -11,6 +12,12 @@ from selenium import webdriver
 from ..axe import Axe
 
 _DEFAULT_TEST_FILE = path.join(path.dirname(__file__), "test_page.html")
+
+# Known values for axe assertions
+NUM_INAPPLICABLE = 71
+NUM_INCOMPLETE = 0
+NUM_PASSES = 7
+NUM_VIOLATIONS = 9
 
 
 @pytest.fixture
@@ -40,10 +47,10 @@ def test_run_axe_sample_page_firefox(firefox_driver):
     """Run axe against sample page and verify JSON output is as expected."""
     data = _perform_axe_run(firefox_driver)
 
-    assert len(data["inapplicable"]) == 60
-    assert len(data["incomplete"]) == 0
-    assert len(data["passes"]) == 7
-    assert len(data["violations"]) == 8
+    assert len(data["inapplicable"]) == NUM_INAPPLICABLE
+    assert len(data["incomplete"]) == NUM_INCOMPLETE
+    assert len(data["passes"]) == NUM_PASSES
+    assert len(data["violations"]) == NUM_VIOLATIONS
 
 
 @pytest.mark.nondestructive
@@ -51,10 +58,10 @@ def test_run_axe_sample_page_chrome(chrome_driver):
     """Run axe against sample page and verify JSON output is as expected."""
     data = _perform_axe_run(chrome_driver)
 
-    assert len(data["inapplicable"]) == 60
-    assert len(data["incomplete"]) == 0
-    assert len(data["passes"]) == 7
-    assert len(data["violations"]) == 8
+    assert len(data["inapplicable"]) == NUM_INAPPLICABLE
+    assert len(data["incomplete"]) == NUM_INCOMPLETE
+    assert len(data["passes"]) == NUM_PASSES
+    assert len(data["violations"]) == NUM_VIOLATIONS
 
 
 def _perform_axe_run(driver):
