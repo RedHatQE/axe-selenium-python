@@ -1,9 +1,8 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
-
-from setuptools import find_packages, setup
+from setuptools import find_packages
+from setuptools import setup
 
 with open("./README.rst") as f:
     readme = f.read()
