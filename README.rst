@@ -44,7 +44,7 @@ To install axe-selenium-python:
 
 .. code-block:: bash
 
-  $ pip install axe-selenium-python
+  $ pip install rh-axe-selenium-python
 
 
 Usage
